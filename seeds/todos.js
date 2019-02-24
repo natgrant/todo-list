@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           priority: 3,
           category: "Todo",
           is_complete: false,
-          due_at: 090319
+          due_at: 1551048622545
         }
       ]);
     });
