@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Nat Grant <email.natgrant@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "knex": "^0.16.3",
