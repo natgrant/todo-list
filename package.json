@@ -5,7 +5,7 @@
   "author": "Nat Grant <email.natgrant@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server"
+    "dev": "nodemon server & webpack --watch"
   },
   "dependencies": {
     "@babel/core": "^7.3.3",
@@ -20,9 +20,13 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-hot-loader": "^4.7.1",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-promise": "^0.6.0",
     "sass-loader": "^7.1.0",
     "sqlite3": "^4.0.6",
     "style-loader": "^0.23.1",
+    "thunk": "^0.0.1",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.0"
