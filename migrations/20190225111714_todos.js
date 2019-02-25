@@ -2,6 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("todos", table => {
     table.increments("id");
     table.string("task");
+    table.integer("user_id");
     table.integer("priority");
     table.string("category");
     table.boolean("is_complete");
