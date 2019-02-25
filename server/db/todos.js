@@ -24,7 +24,20 @@ function getAll(testDB) {
 function createTodo(todo, testDB) {
   const db = testDB || connection;
 
-  return db("todo").insert(todo);
+  return db("users")
+    .where("username", todo.username)
+    .first()
+    .then(user => {
+      const newTodo = {
+        task: todo.task,
+        priority: todo.priority,
+        user_id: user.id,
+        category: todo.category,
+        is_complete: todo.is_complete,
+        due_at: todo.due_at
+      };
+      return db("todos").insert(newTodo);
+    });
 }
 
 function getByUsername(username, testDB) {
