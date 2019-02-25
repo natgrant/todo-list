@@ -1,22 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getTodos } from "../actions";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
 
-export class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.dispatch(getTodos());
-  }
-
   render() {
+    let { todos } = this.props;
     return (
       <div>
         <ul>
-          {this.props.todos.map(todo => {
+          {todos.map(todo => {
             return <li>{todo.task}</li>;
           })}
         </ul>
@@ -34,4 +32,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   null
-)(App);
+)(Home);
