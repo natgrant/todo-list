@@ -1,6 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { getAll, getByUsername, createTodo } = require("../db/todos");
+const {
+  getAll,
+  getByUsername,
+  createTodo,
+  getByPriority,
+  getByCategory,
+  isComplete
+} = require("../db/todos");
 
 router.get("/", (req, res) => {
   getAll()
@@ -43,9 +50,37 @@ router.post("/:username", (req, res) => {
     });
 });
 
-// router.get("/category/:category", (req, res) => {});
+router.get("/priority/:priority", (req, res) => {
+  getByPriority(req.params.priority)
+    .then(todos => {
+      res.json([todos]);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: "Oh no another error" });
+    });
+});
 
-// router.get("/category/:is_complete", (req, res) => {
-// });
+router.get("/category/:category", (req, res) => {
+  getByCategory(req.params.category)
+    .then(todos => {
+      res.json([todos]);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: "Oh no another error" });
+    });
+});
+
+router.get("/complete/:is_complete", (req, res) => {
+  isComplete(req.params.is_complete)
+    .then(todos => {
+      res.json([todos]);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: "Oh no another error" });
+    });
+});
 
 module.exports = router;

@@ -64,8 +64,29 @@ function getByUsername(username, testDB) {
     });
 }
 
+function getByPriority(priority, testDB) {
+  const db = testDB || connection;
+
+  return db("todos").where("priority", priority);
+}
+
+function getByCategory(category, testDB) {
+  const db = testDB || connection;
+
+  return db("todos").where("category", category);
+}
+
+function isComplete(is_complete, testDB) {
+  const db = testDB || connection;
+
+  return db("todos").where("is_complete", is_complete);
+}
+
 module.exports = {
   getAll,
   createTodo,
-  getByUsername
+  getByUsername,
+  getByPriority,
+  getByCategory,
+  isComplete
 };
