@@ -82,13 +82,13 @@ function isComplete(is_complete, testDB) {
   return db("todos").where("is_complete", is_complete);
 }
 
-function deleteTodo(todo, testDB) {
+function deleteTodo(id, testDB) {
   const db = testDB || connection;
 
   return db("todos")
     .where({ id })
     .del()
-    .then(result => {
+    .then(todos => {
       return db("todos").select();
     });
 }
@@ -96,7 +96,8 @@ function deleteTodo(todo, testDB) {
 function editTodo(todo, testDB) {
   const db = testDB || connection;
   return db("todos")
-    .where({ id: todo.id })
+    .where({ id: 103 })
+    .first()
     .update({
       task: todo.task,
       priority: todo.priority,
@@ -105,7 +106,7 @@ function editTodo(todo, testDB) {
       due_at: todo.due_at
     })
     .then(result => {
-      return db("todos").where({ id: todo.id });
+      return db("todos").where({ id: 103 });
     });
 }
 
