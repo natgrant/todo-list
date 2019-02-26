@@ -10,3 +10,7 @@ export function sendTodo(todo, username) {
     .send(todo)
     .then(res => res.body);
 }
+
+export function deleteTodo(id) {
+  return request.delete(`/api/v1/todos/delete/${id}`).then(res => res.body);
+}

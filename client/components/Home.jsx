@@ -9,6 +9,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
 
+import { deleteTodo } from "../actions";
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,11 @@ class Home extends Component {
       checked: [0]
     };
   }
+
+  deleteTodo = e => {
+    console.log(e.target.value);
+    this.props.deleteTodo(e.target.value);
+  };
 
   handleToggle = todo => () => {
     const { checked } = this.state;
@@ -52,6 +59,13 @@ class Home extends Component {
                       <i class="far fa-edit" />
                     </IconButton>
                   </Link>
+                  <IconButton
+                    name="todos"
+                    value={todo.id}
+                    onClick={this.deleteTodo}
+                  >
+                    <i class="far fa-trash-alt" />
+                  </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
             );
@@ -68,7 +82,13 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteTodo: id => dispatch(deleteTodo(id))
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Home);

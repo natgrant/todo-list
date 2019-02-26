@@ -1,4 +1,8 @@
-import { getTodos as apiGetTodos, sendTodo as apiSendTodo } from "../api/todos";
+import {
+  getTodos as apiGetTodos,
+  sendTodo as apiSendTodo,
+  deleteTodo as apiDeleteTodo
+} from "../api/todos";
 
 export const getTodos = () => {
   return dispatch => {
@@ -18,6 +22,14 @@ export const saveTodos = todos => {
 export const sendTodo = (todo, username) => {
   return dispatch => {
     return apiSendTodo(todo, username).then(result => {
+      dispatch(getTodos());
+    });
+  };
+};
+
+export const deleteTodo = id => {
+  return dispatch => {
+    return apiDeleteTodo(id).then(result => {
       dispatch(getTodos());
     });
   };
