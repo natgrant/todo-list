@@ -20,6 +20,24 @@ exports.seed = function(knex, Promise) {
           user_id: 2,
           priority: 5,
           category: "Todo",
+          is_complete: true,
+          due_at: 1551048622545
+        },
+        {
+          id: 103,
+          task: "Code",
+          user_id: 2,
+          priority: 5,
+          category: "Done",
+          is_complete: true,
+          due_at: 1551048622545
+        },
+        {
+          id: 104,
+          task: "Sleep",
+          user_id: 2,
+          priority: 5,
+          category: "Todo",
           is_complete: false,
           due_at: 1551048622545
         }
