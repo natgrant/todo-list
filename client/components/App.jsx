@@ -4,6 +4,9 @@ import { HashRouter as Router, Route } from "react-router-dom";
 
 import Home from "./Home";
 import Todo from "./Todo";
+import Header from "./Header";
+import Navbar from "./Navbar";
+
 import { getTodos } from "../actions";
 
 class App extends Component {
@@ -16,6 +19,8 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <Navbar />
+          <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/:username/todo" component={Todo} />
         </Fragment>

@@ -1,23 +1,59 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
+import { Checkbox } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
 
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      checked: [0]
+    };
   }
+
+  handleToggle = todo => () => {
+    const { checked } = this.state;
+    const currentIndex = checked.indexOf(todo);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(todo);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    this.setState({
+      checked: newChecked
+    });
+  };
 
   render() {
     let { todos } = this.props;
     return (
       <div>
-        <ul>
+        <List>
           {todos.map(todo => {
-            return <li>{todo.task}</li>;
+            return (
+              <ListItem key={todo} button onClick={this.handleToggle(todo)}>
+                <Checkbox
+                  checked={this.state.checked.indexOf(todo) !== -1}
+                  tabIndex={-1}
+                />
+                <ListItemText primary={todo.task} />
+                <ListItemSecondaryAction>
+                  <IconButton>
+                    <i class="far fa-edit" />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            );
           })}
-        </ul>
+        </List>
       </div>
     );
   }

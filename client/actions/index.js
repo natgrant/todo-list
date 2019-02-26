@@ -1,4 +1,4 @@
-import { getTodos as apiGetTodos } from "../api/todos";
+import { getTodos as apiGetTodos, sendTodo as apiSendTodo } from "../api/todos";
 
 export const getTodos = () => {
   return dispatch => {
@@ -15,8 +15,10 @@ export const saveTodos = todos => {
   };
 };
 
-export const sendTodo = todo => {
+export const sendTodo = (todo, username) => {
   return dispatch => {
-    return apiSendTodo(todo).then(result => {});
+    return apiSendTodo(todo, username).then(result => {
+      dispatch(getTodos());
+    });
   };
 };

@@ -26,8 +26,7 @@ class Todo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.dispatch(sendTodo(this.state));
+    this.props.dispatch(sendTodo(this.state, this.props.match.params));
   };
 
   render() {
@@ -71,11 +70,7 @@ class Todo extends Component {
             label=""
           />
           <br />
-          <Button
-            variant="outlined"
-            color="secondary"
-            onSubmit={this.handleSubmit}
-          >
+          <Button variant="outlined" color="secondary">
             Add Todo!
           </Button>
         </form>
