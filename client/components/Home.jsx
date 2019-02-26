@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { Checkbox } from "@material-ui/core";
 import List from "@material-ui/core/List";
@@ -46,9 +47,11 @@ class Home extends Component {
                 />
                 <ListItemText primary={todo.task} />
                 <ListItemSecondaryAction>
-                  <IconButton>
-                    <i class="far fa-edit" />
-                  </IconButton>
+                  <Link to="/edit">
+                    <IconButton>
+                      <i class="far fa-edit" />
+                    </IconButton>
+                  </Link>
                 </ListItemSecondaryAction>
               </ListItem>
             );

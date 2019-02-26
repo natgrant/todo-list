@@ -6,6 +6,7 @@ import Home from "./Home";
 import Todo from "./Todo";
 import Header from "./Header";
 import Navbar from "./Navbar";
+import Complete from "./Complete";
 
 import { getTodos } from "../actions";
 
@@ -22,7 +23,8 @@ class App extends Component {
           <Navbar />
           <Header />
           <Route exact path="/" component={Home} />
-          <Route exact path="/:username/todo" component={Todo} />
+          <Route path="/:username/todo" component={Todo} />
+          <Route path="/completed" component={Complete} />
         </Fragment>
       </Router>
     );

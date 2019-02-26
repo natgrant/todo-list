@@ -3,15 +3,14 @@ import { connect } from "react-redux";
 
 import { sendTodo } from "../actions";
 
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Select, MenuItem, Button, TextField } from "@material-ui/core";
 
 class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       task: "",
-      priority: null,
+      priority: "",
       category: "",
       is_complete: null,
       due_at: null
@@ -33,47 +32,60 @@ class Todo extends Component {
     console.log(this.state);
     return (
       <Fragment>
-        <h1>Enter a new Todo:</h1>
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            type="text"
-            name="task"
-            onChange={this.handleChange}
-            label="Task"
-          />
-          <br />
-          <TextField
-            type="number"
-            name="priority"
-            onChange={this.handleChange}
-            label="Priority 1 - 5"
-          />
-          <br />
-          <TextField
-            type="text"
-            name="category"
-            onChange={this.handleChange}
-            label="Category"
-          />
-          <br />
-          <TextField
-            type="text"
-            name="is_complete"
-            onChange={this.handleChange}
-            label="Complete?"
-          />
-          <br />
-          <TextField
-            type="date"
-            name="due_at"
-            onChange={this.handleChange}
-            label=""
-          />
-          <br />
-          <Button variant="outlined" color="secondary">
-            Add Todo!
-          </Button>
-        </form>
+        <div className="tile is-parent is-half">
+          <form onSubmit={this.handleSubmit}>
+            <TextField
+              type="text"
+              name="task"
+              fullWidth
+              margin="normal"
+              onChange={this.handleChange}
+              label="Task"
+            />
+            <br />
+            <Select
+              type="number"
+              name="priority"
+              onChange={this.handleChange}
+              value={this.state.priority}
+              label="Priority"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="1">1</MenuItem>
+              <MenuItem value="2">2</MenuItem>
+              <MenuItem value="3">3</MenuItem>
+              <MenuItem value="4">4</MenuItem>
+              <MenuItem value="5">5</MenuItem>
+            </Select>
+            <br />
+            <TextField
+              type="text"
+              name="category"
+              onChange={this.handleChange}
+              label="Category"
+            />
+            <br />
+            <TextField
+              type="text"
+              name="is_complete"
+              onChange={this.handleChange}
+              label="Complete?"
+            />
+            <br />
+            <TextField
+              type="date"
+              name="due_at"
+              onChange={this.handleChange}
+              label=""
+            />
+            <br />
+            <Button id="button-add-todo" variant="outlined" color="secondary">
+              Add Todo
+            </Button>
+          </form>
+        </div>
       </Fragment>
     );
   }
