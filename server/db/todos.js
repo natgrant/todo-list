@@ -82,11 +82,40 @@ function isComplete(is_complete, testDB) {
   return db("todos").where("is_complete", is_complete);
 }
 
+function deleteTodo(todo, testDB) {
+  const db = testDB || connection;
+
+  return db("todos")
+    .where({ id })
+    .del()
+    .then(result => {
+      return db("todos").select();
+    });
+}
+
+function editTodo(todo, testDB) {
+  const db = testDB || connection;
+  return db("todos")
+    .where({ id: todo.id })
+    .update({
+      task: todo.task,
+      priority: todo.priority,
+      category: todo.category,
+      is_complete: todo.is_complete,
+      due_at: todo.due_at
+    })
+    .then(result => {
+      return db("todos").where({ id: todo.id });
+    });
+}
+
 module.exports = {
   getAll,
   createTodo,
   getByUsername,
   getByPriority,
   getByCategory,
-  isComplete
+  isComplete,
+  deleteTodo,
+  editTodo
 };

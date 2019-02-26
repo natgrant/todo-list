@@ -6,7 +6,9 @@ const {
   createTodo,
   getByPriority,
   getByCategory,
-  isComplete
+  isComplete,
+  deleteTodo,
+  editTodo
 } = require("../db/todos");
 
 router.get("/", (req, res) => {
@@ -76,6 +78,28 @@ router.get("/complete/:is_complete", (req, res) => {
   isComplete(req.params.is_complete)
     .then(todos => {
       res.json([todos]);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: "Oh no another error" });
+    });
+});
+
+router.delete("/delete/:id", (req, res) => {
+  deleteTodo(req.params.id)
+    .then(todos => {
+      res.json(todos);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: "Oh no another error" });
+    });
+});
+
+router.post("/edit/:id", (req, res) => {
+  editTodo(req.body)
+    .then(todos => {
+      res.json(todos);
     })
     .catch(err => {
       console.log(err);

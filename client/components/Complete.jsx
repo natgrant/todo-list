@@ -17,7 +17,7 @@ class Home extends Component {
       <div>
         <List>
           {todos.map(todo => {
-            if (todo.is_complete == true) {
+            if (todo.is_complete == false) {
               return (
                 <ListItem key={todo}>
                   <Checkbox checked="yes" />
