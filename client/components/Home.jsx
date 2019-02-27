@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Checkbox } from "@material-ui/core";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  Checkbox,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  DeleteIcon
+} from "@material-ui/core";
 
 import { deleteTodo } from "../actions";
 
@@ -64,7 +67,7 @@ class Home extends Component {
                     value={todo.id}
                     onClick={this.deleteTodo}
                   >
-                    <i class="far fa-trash-alt" />
+                    <i class="fas fa-trash-alt" />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>

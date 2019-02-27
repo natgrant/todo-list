@@ -97,7 +97,9 @@ router.delete("/delete/:id", (req, res) => {
 });
 
 router.post("/edit/:id", (req, res) => {
-  editTodo(req.body)
+  let id = req.params.id;
+  let todo = req.body;
+  editTodo(todo, id)
     .then(todos => {
       res.json(todos);
     })

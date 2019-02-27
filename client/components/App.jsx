@@ -25,6 +25,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/:username/todo" component={Todo} />
           <Route path="/completed" component={Complete} />
+          <Route path="/priority/:priority" component={Home} />
         </Fragment>
       </Router>
     );

@@ -93,10 +93,10 @@ function deleteTodo(id, testDB) {
     });
 }
 
-function editTodo(todo, testDB) {
+function editTodo(todo, id, testDB) {
   const db = testDB || connection;
   return db("todos")
-    .where({ id: 103 })
+    .where("id", id)
     .first()
     .update({
       task: todo.task,
@@ -106,7 +106,7 @@ function editTodo(todo, testDB) {
       due_at: todo.due_at
     })
     .then(result => {
-      return db("todos").where({ id: 103 });
+      return db("todos").where("id", id);
     });
 }
 
