@@ -8,17 +8,18 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  IconButton,
-  DeleteIcon
+  IconButton
 } from "@material-ui/core";
 
 import { deleteTodo } from "../actions";
+import EditTodo from "./EditTodo";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: [0]
+      checked: [0],
+      isVisible: false
     };
   }
 
@@ -43,6 +44,18 @@ class Home extends Component {
     });
   };
 
+  handleChange = () => {
+    this.setState({
+      isVisible: false
+    });
+  };
+
+  handleClicks = () => {
+    this.setState({
+      isVisible: true
+    });
+  };
+
   render() {
     let { todos } = this.props;
     return (
@@ -57,17 +70,18 @@ class Home extends Component {
                 />
                 <ListItemText primary={todo.task} />
                 <ListItemSecondaryAction>
-                  <Link to="/edit">
-                    <IconButton>
-                      <i class="far fa-edit" />
-                    </IconButton>
-                  </Link>
+                  {this.state.visible && (
+                    <EditTodo {...this.props} buttonClick={this.handleChange} />
+                  )}
+                  <IconButton onClick={this.handleClick}>
+                    <i className="far fa-edit" />
+                  </IconButton>
                   <IconButton
                     name="todos"
                     value={todo.id}
                     onClick={this.deleteTodo}
                   >
-                    <i class="fas fa-trash-alt" />
+                    <i className="fas fa-trash-alt" />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
