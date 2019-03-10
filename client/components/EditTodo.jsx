@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from "react";
+
+import { Select, MenuItem, Button, TextField } from "@material-ui/core";
 
 export default class EditTodo extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      task = "",
-      priority = "",
-      is_complete = "no",
-      category = "",
-      due = ""
-    }
+      task: "",
+      priority: "",
+      is_complete: "no",
+      category: "",
+      due: ""
+    };
   }
   render() {
     return (
@@ -76,6 +78,6 @@ export default class EditTodo extends Component {
           </form>
         </div>
       </Fragment>
-    )
+    );
   }
 }
