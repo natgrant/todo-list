@@ -7,7 +7,7 @@ export default function Navbar() {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            <i class="far fa-calendar-check" />
+            <i className="far fa-calendar-check" />
           </a>
           <a
             role="button"
