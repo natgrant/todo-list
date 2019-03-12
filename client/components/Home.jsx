@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 
 import { deleteTodo } from "../actions";
-import EditTodo from "./EditTodo";
+import FormContainer from "./FormContainer";
 
 class Home extends Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class Home extends Component {
   }
 
   deleteTodo = e => {
+    console.log(e.target.value);
     this.props.deleteTodo(e.target.value);
   };
 
@@ -53,9 +54,11 @@ class Home extends Component {
       isVisible: true
     });
   };
-
   render() {
+    console.log(this.props);
     let { todos } = this.props;
+
+    const triggerText = "Open Form";
     return (
       <div>
         <List>
@@ -68,23 +71,26 @@ class Home extends Component {
                 />
                 <ListItemText primary={todo.task} />
                 <ListItemSecondaryAction>
-                  <a
+                  <IconButton
                     className="button is-rounded is-warning"
                     onClick={this.handleClick}
                   >
                     <i className="far fa-edit" />
-                  </a>
+                  </IconButton>
                   {this.state.isVisible && (
-                    <EditTodo {...this.props} buttonClick={this.handleChange} />
+                    <FormContainer
+                      triggerText={triggerText}
+                      onSubmit={e => e.preventDefault}
+                    />
                   )}
-                  <a
+                  <IconButton
                     className="button is-rounded is-danger"
                     name="todos"
                     value={todo.id}
                     onClick={this.deleteTodo}
                   >
                     <i className="fas fa-trash-alt" />
-                  </a>
+                  </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
             );

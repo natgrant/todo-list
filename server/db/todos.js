@@ -12,10 +12,8 @@ function getAll(testDB) {
           id: todo.user_id,
           username: todo.username
         };
-
         delete todo.user_id;
         delete todo.username;
-
         return todo;
       });
     });
@@ -55,9 +53,7 @@ function getByUsername(username, testDB) {
               id: todo.user_id,
               username: user.username
             };
-
             delete todo.user_id;
-
             return todo;
           });
         });

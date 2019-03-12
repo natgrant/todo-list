@@ -23,9 +23,8 @@ const config = {
   resolve: {
     extensions: [".js", ".jsx"]
   },
-  devServer: {
-    contentBase: "./dist"
-  }
+  devtool: "source-map",
+  mode: "development"
 };
 
 module.exports = config;

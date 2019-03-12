@@ -29,7 +29,6 @@ class Todo extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Fragment>
         <div className="tile is-parent is-half">
