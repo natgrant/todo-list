@@ -1,13 +1,13 @@
 import React from "react";
 
-const Trigger = ({ triggerText, buttonRef, showModal }) => {
+const Trigger = ({ buttonRef, showModal }) => {
   return (
     <button
-      className="button is-large is-inverted center modal-button"
+      className="button is-large is-rounded center modal-button"
       ref={buttonRef}
       onClick={showModal}
     >
-      {triggerText}
+      <i className="fas fa-plus" />
     </button>
   );
 };
