@@ -1,25 +1,31 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-export default class EditForm extends Component {
+export class EditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       task: this.props.task,
       priority: this.props.priority,
-      is_complete: this.props.is_complete,
+      complete: this.props.is_complete,
       category: this.props.category,
-      due: this.props.due_at
+      due: new Date()
     };
   }
 
   onFormSubmit = e => {
     e.preventDefault();
-    const formData = newFormData();
+    const formData = new FormData();
     formData.append("task", this.state.task);
     formData.append("priority", this.state.priority);
-    formData.append("is_complete", this.state.is_complete);
+    formData.append("is_complete", this.state.complete);
     formData.append("category", this.state.category);
     formData.append("due", this.state.due_at);
+  };
+
+  handleChange = e => {
+    console.log(e.target.value);
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   onChangeDate = date => this.setState({ date });
@@ -29,7 +35,7 @@ export default class EditForm extends Component {
       <Fragment>
         <form onSubmit={this.onFormSubmit}>
           <div className="field">
-            <label className="label" />
+            <label className="label">Task Name</label>
             <div className="control">
               <input
                 className="input"
@@ -48,26 +54,39 @@ export default class EditForm extends Component {
                 defaultValue={this.props.priority}
                 onChange={this.handleChange}
               >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option />
+                {[1, 2, 3, 4, 5].map(n => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
-          <div className="control">
-            <label className="radio">
-              <input type="radio" name="answer" />
-              Yes
-            </label>
-            <label className="radio">
-              <input type="radio" name="answer" />
-              No
-            </label>
+          <div className="field">
+            <div className="control">
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="complete"
+                  defaultValue={this.props.is_complete}
+                  onChange={this.handleChange}
+                />
+                Yes
+              </label>
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="complete"
+                  defaultValue={this.props.is_complete}
+                  onChange={this.handleChange}
+                />
+                No
+              </label>
+            </div>
           </div>
           <div className="field">
-            <label className="label" />
+            <label className="label">Category</label>
             <div className="select">
               <select
                 name="category"
@@ -81,22 +100,33 @@ export default class EditForm extends Component {
             </div>
           </div>
           <div className="field">
-            <label className="label" />
+            <label className="label">Due </label>
             <div className="control">
               <input
                 className="input"
                 type="date"
                 name="due"
                 onChange={this.handleChange}
-                defaultValue={this.props.date}
+                defaultValue={this.state.date}
               />
             </div>
           </div>
-          <a variant="outlined" color="is-secondary" type="submit">
+          <button className="button is-secondary is-outlined" type="submit">
             Change Todo
-          </a>
+          </button>
         </form>
       </Fragment>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    todos: state.todos
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(EditForm);

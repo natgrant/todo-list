@@ -41,12 +41,6 @@ export const Modal = ({
               <EditForm />
             </section>
             <footer className="modal-card-foot">
-              <button
-                className="button is-primary is-rounded"
-                onSubmit={onSubmit}
-              >
-                Save Changes
-              </button>
               <button className="button is-rounded" onClick={closeModal}>
                 Cancel
               </button>
