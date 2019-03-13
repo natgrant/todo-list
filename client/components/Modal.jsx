@@ -11,7 +11,8 @@ export const Modal = ({
   modalRef,
   buttonRef,
   closeModal,
-  onSubmit
+  onSubmit,
+  ...todo
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -38,7 +39,7 @@ export const Modal = ({
           </div>
           <div className="modal-content" ref={modalRef}>
             <section className="modal-card-body">
-              <EditForm />
+              <EditForm {...todo} />
             </section>
             <footer className="modal-card-foot">
               <button className="button is-rounded" onClick={closeModal}>

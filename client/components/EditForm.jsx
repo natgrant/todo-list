@@ -64,23 +64,17 @@ export class EditForm extends Component {
             </div>
           </div>
           <div className="field">
-            <div className="control">
+            <div
+              className="control"
+              defaultValue={this.props.is_complete}
+              onChange={this.handleChange}
+            >
               <label className="radio">
-                <input
-                  type="radio"
-                  name="complete"
-                  defaultValue={this.props.is_complete}
-                  onChange={this.handleChange}
-                />
+                <input type="radio" name="complete" />
                 Yes
               </label>
               <label className="radio">
-                <input
-                  type="radio"
-                  name="complete"
-                  defaultValue={this.props.is_complete}
-                  onChange={this.handleChange}
-                />
+                <input type="radio" name="complete" />
                 No
               </label>
             </div>

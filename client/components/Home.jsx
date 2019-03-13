@@ -23,7 +23,6 @@ class Home extends Component {
   }
 
   deleteTodo = e => {
-    console.log(e.target.value);
     this.props.deleteTodo(e.target.value);
   };
 
@@ -79,6 +78,7 @@ class Home extends Component {
                   </IconButton>
                   {this.state.isVisible && (
                     <FormContainer
+                      {...todo}
                       triggerText={triggerText}
                       onSubmit={e => e.preventDefault}
                     />
