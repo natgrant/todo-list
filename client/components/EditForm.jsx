@@ -14,6 +14,7 @@ export class EditForm extends Component {
   }
 
   onFormSubmit = e => {
+    console.log("im being hit");
     e.preventDefault();
     const formData = new FormData();
     formData.append("task", this.state.task);
@@ -70,11 +71,21 @@ export class EditForm extends Component {
               onChange={this.handleChange}
             >
               <label className="radio">
-                <input type="radio" name="complete" />
+                <input
+                  type="radio"
+                  name="complete"
+                  defaultValue="yes"
+                  onChange={this.handleChange}
+                />
                 Yes
               </label>
               <label className="radio">
-                <input type="radio" name="complete" />
+                <input
+                  type="radio"
+                  name="complete"
+                  defaultValue="no"
+                  onChange={this.handleChange}
+                />
                 No
               </label>
             </div>
