@@ -9,7 +9,7 @@ export class EditForm extends Component {
       priority: this.props.priority,
       complete: this.props.is_complete,
       category: this.props.category,
-      due: new Date()
+      due: this.props.due_at
     };
   }
 
@@ -94,14 +94,14 @@ export class EditForm extends Component {
             </div>
           </div>
           <div className="field">
-            <label className="label">Due </label>
+            <label className="label">Due</label>
             <div className="control">
               <input
                 className="input"
                 type="date"
                 name="due"
                 onChange={this.handleChange}
-                defaultValue={this.state.date}
+                defaultValue={this.props.due_at}
               />
             </div>
           </div>

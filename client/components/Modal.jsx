@@ -11,7 +11,7 @@ export const Modal = ({
   modalRef,
   buttonRef,
   closeModal,
-  onSubmit,
+  onFormSubmit,
   ...todo
 }) => {
   return ReactDOM.createPortal(
@@ -42,6 +42,12 @@ export const Modal = ({
               <EditForm {...todo} />
             </section>
             <footer className="modal-card-foot">
+              <button
+                className="button is-primary is-rounded"
+                onSubmit={onFormSubmit}
+              >
+                Save Changes
+              </button>
               <button className="button is-rounded" onClick={closeModal}>
                 Cancel
               </button>

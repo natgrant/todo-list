@@ -77,11 +77,7 @@ class Home extends Component {
                     <i className="far fa-edit" />
                   </IconButton>
                   {this.state.isVisible && (
-                    <FormContainer
-                      {...todo}
-                      triggerText={triggerText}
-                      onSubmit={e => e.preventDefault}
-                    />
+                    <FormContainer {...todo} triggerText={triggerText} />
                   )}
                   <IconButton
                     className="button is-rounded is-danger"
