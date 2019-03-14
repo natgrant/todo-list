@@ -33,7 +33,7 @@ export default function Navbar() {
             <a className="navbar-item">Priority</a>
           </div>
 
-          <div className="navbar-end">
+          {/* TODO - add auth: <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
                 <a className="button is-primary">
@@ -42,7 +42,7 @@ export default function Navbar() {
                 <a className="button is-light">Log in</a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </nav>
     </div>

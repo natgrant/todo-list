@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
+import { editTodoAction } from "../actions/editTodo";
+
 export class EditForm extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,6 @@ export class EditForm extends Component {
   }
 
   onFormSubmit = e => {
-    console.log("im being hit");
     e.preventDefault();
     const formData = new FormData();
     formData.append("task", this.state.task);
@@ -22,6 +23,7 @@ export class EditForm extends Component {
     formData.append("is_complete", this.state.complete);
     formData.append("category", this.state.category);
     formData.append("due", this.state.due_at);
+    this.props.EditTodo(formData);
   };
 
   handleChange = e => {
@@ -70,23 +72,25 @@ export class EditForm extends Component {
               defaultValue={this.props.is_complete}
               onChange={this.handleChange}
             >
+              <p>Complete?</p>
               <label className="radio">
                 <input
                   type="radio"
                   name="complete"
-                  defaultValue="yes"
+                  value="Yes"
                   onChange={this.handleChange}
                 />
-                Yes
+                &nbsp; Yes
               </label>
               <label className="radio">
                 <input
                   type="radio"
                   name="complete"
-                  defaultValue="no"
+                  value="No"
                   onChange={this.handleChange}
+                  defaultChecked
                 />
-                No
+                &nbsp; No
               </label>
             </div>
           </div>
@@ -131,7 +135,13 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    EditTodo: formData => dispatch(editTodoAction(formData))
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(EditForm);
