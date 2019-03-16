@@ -1,7 +1,8 @@
 import {
   getTodos as apiGetTodos,
   sendTodo as apiSendTodo,
-  deleteTodo as apiDeleteTodo
+  deleteTodo as apiDeleteTodo,
+  editTodo as apiEditTodo
 } from "../api/todos";
 
 export const getTodos = () => {
@@ -30,6 +31,14 @@ export const sendTodo = (todo, username) => {
 export const deleteTodo = id => {
   return dispatch => {
     return apiDeleteTodo(id).then(result => {
+      dispatch(getTodos());
+    });
+  };
+};
+
+export const editTodoAction = id => {
+  return dispatch => {
+    return apiEditTodo(id).then(result => {
       dispatch(getTodos());
     });
   };

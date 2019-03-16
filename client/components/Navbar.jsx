@@ -30,7 +30,6 @@ export default function Navbar() {
             <Link to="/completed" className="navbar-item">
               Complete
             </Link>
-            <a className="navbar-item">Priority</a>
           </div>
 
           {/* TODO - add auth: <div className="navbar-end">

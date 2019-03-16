@@ -1,8 +1,8 @@
 import { editTodo as apiEditTodo } from "../api/todos";
 
-export const editTodo = FormData => {
+export const editTodoAction = id => {
   return dispatch => {
-    return apiDeleteTodo(FormData).then(result => {
+    return apiEditTodo(id).then(result => {
       dispatch(getTodos());
     });
   };

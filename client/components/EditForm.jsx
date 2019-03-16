@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-import { editTodoAction } from "../actions/editTodo";
+import { editTodo } from "../actions";
 
 export class EditForm extends Component {
   constructor(props) {
@@ -137,7 +137,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    EditTodo: formData => dispatch(editTodoAction(formData))
+    EditTodo: formData => dispatch(editTodo(formData))
   };
 };
 
