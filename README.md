@@ -15,8 +15,6 @@ Because we all know the world NEEDS another todo-list, oh and:
 
 - I want to produce a functional full-stack app, utilising the concepts as listed above.
 
-## Planning:
-
 ## Payload
 
 - Array of objects
